@@ -1,7 +1,14 @@
 # ui
 Web interface for kwetter application.
+- VueJS with TypeScript
 
 ## Run
+Install dependencies
+```zsh
+npm install
+```
+
+Serve the application on http://localhost:8080.
 ```zsh
 npm run serve
 ```
