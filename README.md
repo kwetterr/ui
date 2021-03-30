@@ -13,11 +13,11 @@ Serve the application on http://localhost:8080.
 npm run serve
 ```
 
-## Run with Docker
+## Run in a Nginx Docker container
 ```zsh
 docker build -t kwetter-ui .
 ```
 
 ```zsh
-docker run -it -p 8080:8080 --rm --name kwetter-ui-app kwetter-ui
+docker run -it -p 8080:80 --rm --name kwetter-ui-app kwetter-ui
 ```
