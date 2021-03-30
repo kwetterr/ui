@@ -1,3 +1,7 @@
+[![CodeQL](https://github.com/kwetterr/ui/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/kwetterr/ui/actions/workflows/codeql-analysis.yml)
+[![Build](https://github.com/kwetterr/ui/actions/workflows/build.yml/badge.svg)](https://github.com/kwetterr/ui/actions/workflows/build.yml)
+[![Publish Docker image](https://github.com/kwetterr/ui/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/kwetterr/ui/actions/workflows/docker-publish.yml)
+
 # ui
 Web interface for kwetter application.
 - VueJS with TypeScript
