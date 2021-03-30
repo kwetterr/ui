@@ -20,6 +20,7 @@ export default class Button extends Vue {
     this.$emit("btn-clicked");
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
