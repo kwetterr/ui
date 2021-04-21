@@ -8,15 +8,19 @@ import { faUsersSlash } from '@fortawesome/free-solid-svg-icons';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
 export default class UserService {
+  private base: string = process.env.VUE_APP_USER_API_URL;
+
   constructor() {
-    axios(process.env.USER_API_URL);
+    
   }
 
   private defaultErr = new Error("Oeps er ging iets fout.");
 
-  public async Authorize(authReq: AuthorizeReq): Promise<User> {
-    await axios.post<AuthorizeRes>(`/authorize`, authReq)
+  public Authorize(authReq: AuthorizeReq, callback: any) {
+
+    axios.post<AuthorizeRes>(`${this.base}/authorize`, authReq)
       .then(res => {
+
         var d = res.data;
         var user = new User();
         user.id = d.id;
@@ -27,14 +31,14 @@ export default class UserService {
         user.biography = d.biography;
         user.avatar = d.avatar;
         user.role = d.role;
-        return user;
+        callback("", user)
       })
-      .catch(err => { throw err });
-    throw this.defaultErr;
+      .catch(err => callback(err, null));
   }
 
   public async Create(createReq: CreateReq): Promise<User> {
-    await axios.post<_UserRes>(`/create`, createReq)
+    await axios
+      .post<_UserRes>(`${this.base}/create`, createReq)
       .then(res => {
         return this.convertUserReqToUser(res.data);
       })
@@ -43,26 +47,26 @@ export default class UserService {
   }
 
   public async Get(id: string): Promise<User> {
-    await axios.get<_UserRes>(`/${id}`)
+    await axios.get<_UserRes>(`${this.base}/${id}`)
       .then(res => { return this.convertUserReqToUser(res.data) })
       .catch(err => { throw err });
     throw this.defaultErr;
   }
 
   public async Update(req: UpdateReq, id: string): Promise<User> {
-    await axios.put<_UserRes>(`/${id}`, req)
+    await axios.put<_UserRes>(`${this.base}/${id}`, req)
       .then(res => { return this.convertUserReqToUser(res.data) })
       .catch(err => { throw err });
     throw this.defaultErr;
   }
 
   public async Delete(id: string) {
-    await axios.delete<_UserRes>(`/${id}`)
+    await axios.delete<_UserRes>(`${this.base}/${id}`)
       .catch(err => { throw err });
   }
 
   public async GetAll(): Promise<User[]> {
-    await axios.get<_UserRes[]>(`/`)
+    await axios.get<_UserRes[]>(`${this.base}/`)
       .then(res => {
         var users: User[] = [];
         res.data.forEach(r => {

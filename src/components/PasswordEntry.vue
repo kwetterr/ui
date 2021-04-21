@@ -1,22 +1,22 @@
 <template>
   <div class="input-container">
     <div class="text-container">
-      <label class="input-label"> {{ labelName }} </label>
+      <label class="input-label" :v-model="currentValue"> {{ labelName }} </label>
       <span class="helper">Forgot Password?</span>
     </div>
-    <input type="password"/>
+    <input type="password" @change="inputChanged()" v-model="currentValue" />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Emit, Prop, Vue } from 'vue-property-decorator';
 import Entry from './Entry.vue';
 
 @Component
 export default class PasswordEntry extends Entry {
+
 }
 </script>
-
 
 <style scoped lang="scss">
 

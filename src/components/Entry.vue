@@ -1,25 +1,36 @@
 <template>
   <div class="input-container">
     <label class="input-label"> {{ labelName }} </label>
-    <input class="entry" :type="inputType"/>
+    <input
+      class="entry"
+      :type="inputType"
+      v-model="currentValue"
+      @change="inputChanged()"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 
-@Component
+@Component({})
 export default class Entry extends Vue {
-  
-  @Prop() private labelName!: string;
-  @Prop() private inputType!: string;
-  @Prop() private value!: string;
+
+  @Prop() public labelName!: string;
+  @Prop() public inputType!: string;
+
+  public currentValue: string = "";//Object.assign("", this.initialValue);
+
+  @Emit()
+  public inputChanged() {
+    return this.currentValue;
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import '../scss/_variables.scss';
+@import "../scss/_variables.scss";
 
 .input-container {
   display: flex;
@@ -51,7 +62,7 @@ export default class Entry extends Vue {
 
 @media only screen and (max-width: 1000px) {
   .entry {
-    width: $entry-width / 1.5
+    width: $entry-width / 1.5;
   }
 }
 </style>

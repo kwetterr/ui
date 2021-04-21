@@ -5,6 +5,7 @@ import store from './store'
 
 import Notifications from 'vue-notification'
 import '../src/scss/_main.scss'
+require('dotenv').config();
 
 
 Vue.config.productionTip = false

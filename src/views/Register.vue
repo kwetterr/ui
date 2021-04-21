@@ -35,6 +35,9 @@ import CallToActionFiller from "@/components/CallToActionFiller.vue";
 import Checkbox from "@/components/Checkbox.vue";
 import Logo from "@/components/Logo.vue";
 import Vue from "vue";
+import UserService from "@/services/UserService";
+import User from "@/models/User";
+import AuthorizeReq from "@/models/request/user/AuthorizeReq";
 
 export default Vue.extend({
   name: "Login",

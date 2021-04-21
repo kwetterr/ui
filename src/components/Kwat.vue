@@ -55,8 +55,6 @@ export default class Kwat extends Vue {
     // https://stackoverflow.com/questions/16767301/calculate-difference-between-2-timestamps-using-javascript
 
     var difference = date1.getTime() - date2.getTime();
-    console.log("d1", date1);
-    console.log("d2", date2);
 
     var daysDifference = Math.floor(difference / 1000 / 60 / 60 / 24);
     difference -= daysDifference * 1000 * 60 * 60 * 24;
