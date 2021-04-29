@@ -1,0 +1,30 @@
+{
+  "name": "kwetterr",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0",
+    "vue-class-component": "^8.0.0-0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
+    "@typescript-eslint/parser": "^4.15.1",
+    "@vue/cli-plugin-babel": "^5.0.0-beta.0",
+    "@vue/cli-plugin-eslint": "^5.0.0-beta.0",
+    "@vue/cli-plugin-typescript": "^4.5.12",
+    "@vue/cli-service": "^5.0.0-beta.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "eslint": "^7.20.0",
+    "eslint-plugin-vue": "^7.6.0",
+    "typescript": "~4.1.5"
+  }
+}
