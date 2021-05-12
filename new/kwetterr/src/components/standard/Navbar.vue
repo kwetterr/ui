@@ -37,7 +37,7 @@
         </figure>
         <div class="navbar-item">
           <div class="buttons">
-            <router-link :to="{ name: 'Register' }" class="button is-primary">
+            <router-link :to="{ name: 'Register' }" class="button is-link">
               <strong>Sign up</strong>
             </router-link>
             <router-link :to="{ name: 'Login' }" class="button is-light">

@@ -25,5 +25,4 @@ $link: #4A42C1;
 @import "../node_modules/bulma/bulma.sass";
 @import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 
-
 </style>
