@@ -1,5 +1,5 @@
 <template>
-  <div class="container form">
+  <form class="container form">
     <h1 class="title">Login</h1>
     <div class="form-control">
       <div class="field">
@@ -12,17 +12,18 @@
       <div class="field">
         <label class="label">Password</label>
         <p class="control has-icons-left has-icons-right">
-          <input v-model="loginModel.password" class="input" type="password" placeholder="Password" />
+          <input v-model="loginModel.password" current-password class="input" type="password" placeholder="Password" />
         </p>
       </div>
 
       <Btn :text="submit" @click="login()" />
     </div>
-  </div>
+  </form>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import router from "@/router";
 import Btn from "@/components/standard/Btn.vue";
 import { LoginModel } from "@/types/req/LoginModel";
 
@@ -30,6 +31,9 @@ const Login = defineComponent({
   components: {
     Btn,
   },
+  emits: [
+    "credentials-changed"
+  ],
   data() {
     return {
       submit: "Login",
@@ -41,7 +45,10 @@ const Login = defineComponent({
   },
   methods: {
     login(): void {
-      alert(`email: ${this.loginModel.email}, password: ${this.loginModel.password}`);
+      let userId = "1";
+      localStorage.setItem("userId", userId);
+      router.push("/");
+      this.$emit("credentials-changed");
     },
   },
 });

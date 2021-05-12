@@ -1,12 +1,5 @@
 <template>
   <div class="container is-fullhd">
-    <section class="hero is-link">
-      <div class="hero-body">
-        <p class="title">Admin</p>
-        <p class="subtitle">Kwetterr</p>
-      </div>
-    </section>
-
     <section class="table-section">
         <label class="label is-size-4 has-text-weight-bold has-text-black">
           Search

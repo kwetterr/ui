@@ -21,7 +21,10 @@
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
         <router-link :to="{ name: 'Home' }" class="navbar-item">
-          Newsfeed  
+          Newsfeed
+        </router-link>
+        <router-link :to="{ name: 'Admin' }" class="navbar-item">
+          Admin
         </router-link>
         <router-link :to="{ name: 'Home' }" class="navbar-item">
           Profile
@@ -29,13 +32,7 @@
       </div>
 
       <div class="navbar-end">
-        <figure class="image is-32x32">
-          <img
-            class="is-rounded"
-            src="https://bulma.io/images/placeholders/128x128.png"
-          />
-        </figure>
-        <div class="navbar-item">
+        <div v-if="!loggedIn" class="navbar-item">
           <div class="buttons">
             <router-link :to="{ name: 'Register' }" class="button is-link">
               <strong>Sign up</strong>
@@ -45,6 +42,13 @@
             </router-link>
           </div>
         </div>
+        <div v-else class="navbar-item">
+          <div class="buttons">
+            <div class="button is-link" @click="logout()">
+              <strong>Logout</strong>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -52,11 +56,31 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import router from "@/router";
 
 const Navbar = defineComponent({
+  emits: [
+    "logged-out"
+  ],
   methods: {
     register() {},
     login() {},
+    logout() {
+      localStorage.removeItem("userId");
+      this.loggedIn = false;
+      this.$emit("logged-out");
+      router.push("/");
+    },
+  },
+  data() {
+    return {
+      loggedIn: false,
+    };
+  },
+  created() {
+    if (localStorage.getItem("userId")) {
+      this.loggedIn = true;
+    }
   },
 });
 export default Navbar;

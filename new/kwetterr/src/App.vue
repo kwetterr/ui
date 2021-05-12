@@ -1,10 +1,15 @@
 <template>
-    <navbar/>
-    <router-view/>
+    <navbar @loggedOut="loggedIn = false" />
+
+    <router-view v-if="loggedIn"/>
+    <router-view v-else>
+      <Login />
+    </router-view>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+import Login from '@/views/Login.vue';
 import Navbar from '@/components/standard/Navbar.vue';
 import Admin from '@/views/Admin.vue';
 
@@ -12,7 +17,19 @@ import Admin from '@/views/Admin.vue';
   components: {
     Admin,
     Navbar,
+    Login
   },
+  data() {
+    return {
+      loggedIn: false
+    }
+  },
+  created() {
+    let id = localStorage.getItem("userId");
+    if(id) {
+      this.loggedIn = true;
+    }
+  }
 })
 export default class App extends Vue {}
 </script>
