@@ -1,5 +1,6 @@
 <template>
   <div class="container form">
+    <h1 class="title">Login</h1>
     <div class="form-control">
       <div class="field">
         <label class="label">Email</label>

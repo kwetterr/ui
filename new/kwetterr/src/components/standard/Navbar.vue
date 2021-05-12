@@ -20,7 +20,12 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item"> Home </a>
+        <router-link :to="{ name: 'Home' }" class="navbar-item">
+          Newsfeed  
+        </router-link>
+        <router-link :to="{ name: 'Home' }" class="navbar-item">
+          Profile
+        </router-link>
       </div>
 
       <div class="navbar-end">
@@ -30,14 +35,16 @@
             src="https://bulma.io/images/placeholders/128x128.png"
           />
         </figure>
-        <!-- <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button is-light"> Log in </a>
-            </div>
-          </div> -->
+        <div class="navbar-item">
+          <div class="buttons">
+            <router-link :to="{ name: 'Register' }" class="button is-primary">
+              <strong>Sign up</strong>
+            </router-link>
+            <router-link :to="{ name: 'Login' }" class="button is-light">
+              Log in
+            </router-link>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -46,7 +53,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-const Navbar = defineComponent({});
+const Navbar = defineComponent({
+  methods: {
+    register() {},
+    login() {},
+  },
+});
 export default Navbar;
 </script>
 
