@@ -1,6 +1,6 @@
 <template>
     <navbar/>
-    <admin/>
+    <router-view/>
 </template>
 
 <script lang="ts">

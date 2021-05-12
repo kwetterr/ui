@@ -3,7 +3,7 @@
   <p class="control has-icons-left has-icons-right ">
     <input class="input" type="email" placeholder="Type a name">
     <span class="icon is-small is-right">
-      <i class="fas fa-search"></i>
+      <i class="fas fa-search"/>
     </span>
   </p>
 </div>
@@ -21,4 +21,14 @@ export default Input;
 .field {
   max-width: 400px;
 }
+
+.icon {
+  cursor: pointer;
+
+  &:hover {
+    cursor: pointer;
+    color: red;
+  }
+}
+
 </style>
