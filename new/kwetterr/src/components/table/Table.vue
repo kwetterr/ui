@@ -3,10 +3,10 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Id</th>
+          <!-- <th>Id</th> -->
           <th>User</th>
           <th>Email</th>
-          <th>Role</th>
+          <!-- <th>Role</th> -->
         </tr>
       </thead>
       <tbody>

@@ -7,10 +7,11 @@
 
       <a
         role="button"
-        class="navbar-burger"
+        :class="menuOpen ? 'navbar-burger' : 'navbar-burger is-active'"
         aria-label="menu"
         aria-expanded="false"
         data-target="navbarBasicExample"
+        @click="openMobileMenu()"
       >
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -18,7 +19,7 @@
       </a>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
+    <div :class="menuOpen ? 'navbar-menu' : 'navbar-menu is-active'">
       <div v-if="loggedIn" class="navbar-start">
         <router-link :to="{ name: 'home' }" class="navbar-item">
           Newsfeed
@@ -41,7 +42,11 @@
         </div>
         <div v-else class="navbar-item">
           <div class="buttons">
-            <router-link :to="{ name: 'profile', params: { username: username } }" v-if="username" class="button is-transparant" >
+            <router-link
+              :to="{ name: 'profile', params: { username: username } }"
+              v-if="username"
+              class="button is-transparant"
+            >
               {{ username }}
             </router-link>
             <div class="button is-link" @click="logout()">
@@ -60,19 +65,25 @@ import router from "@/router";
 
 const Navbar = defineComponent({
   emits: ["logged-out"],
+  data() {
+    return {
+      menuOpen: false,
+    }
+  },
   props: {
     loggedIn: Boolean,
     username: String,
   },
   methods: {
-    register() {},
-    login() {},
     logout() {
       localStorage.removeItem("user");
       this.$emit("logged-out");
       router.push("/login");
     },
-  }
+    openMobileMenu() {
+      this.menuOpen = !this.menuOpen;
+    }
+  },
 });
 export default Navbar;
 </script>
