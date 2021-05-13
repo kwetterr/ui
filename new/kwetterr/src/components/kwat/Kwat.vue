@@ -46,8 +46,8 @@ const Input = defineComponent({
       type: Number,
     },
     tags: {
-      type: [],
-      value: Array<String>(),
+      type: Array,
+      value: []
     },
   },
   data() {

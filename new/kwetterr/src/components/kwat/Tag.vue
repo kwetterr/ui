@@ -20,8 +20,8 @@ export default Tag;
 .kwat-tags {
   font-size: 0.9rem;
   text-align: left;
-
   flex-basis: 33%;
+  cursor: pointer;
     &:last-child {
       margin-bottom: 0;
     }
