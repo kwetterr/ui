@@ -19,6 +19,7 @@
         :likes="k.likes"
         :text="k.text"
         :created_at="k.created_at"
+        :tags="k.tags"
       />
     </div>
   </div>

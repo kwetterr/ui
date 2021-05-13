@@ -4,5 +4,6 @@ export interface Kwat {
   usertag: string,
   created_at: number,
   text: string,
-  likes: number
+  likes: number,
+  tags: string[]
 }

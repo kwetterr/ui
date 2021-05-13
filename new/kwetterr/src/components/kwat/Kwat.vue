@@ -7,52 +7,56 @@
         :time_since="getTimeDiff(created_at)"
       />
       <p class="content">Once a simp always a simp.</p>
+      <div class="tag-container">
+        <Tag class="kwat-tags" v-for="tag in tags" :key="tag" :text="tag" />
+      </div>
     </div>
     <footer class="card-footer">
-      <KwatAction
-        :likes="likes"
-        :liked="liked"
-      />
+      <KwatAction :likes="likes" :liked="liked" />
     </footer>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, } from "vue";
+import { defineComponent } from "vue";
 import KwatAction from "@/components/kwat/KwatAction.vue";
 import KwatHeader from "@/components/kwat/KwatHeader.vue";
+import Tag from "@/components/kwat/Tag.vue";
 
 const Input = defineComponent({
   components: {
     KwatAction,
     KwatHeader,
+    Tag,
   },
   props: {
     username: {
-      type: String
+      type: String,
     },
     usertag: {
-      type: String
+      type: String,
     },
     likes: {
-      type: Number
+      type: Number,
     },
     text: {
-      type: String
+      type: String,
     },
     created_at: {
-      type: Number
-    }
+      type: Number,
+    },
+    tags: {
+      type: [],
+      value: Array<String>(),
+    },
   },
   data() {
     return {
       liked: false,
     };
   },
-  setup() {
-  },
+  setup() {},
   methods: {
-
     getTimeDiff(createdAt: number): string {
       var now: Date = new Date();
       var createdAtType: Date = new Date(createdAt * 1000);
@@ -98,6 +102,14 @@ export default Input;
     .title {
       font-size: 1em;
     }
+  }
+}
+
+.tag-container {
+  display: flex;
+  flex-flow: wrap;
+  .kwat-tags {
+    
   }
 }
 </style>

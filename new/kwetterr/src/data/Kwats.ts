@@ -7,7 +7,13 @@ export default [
     usertag: "@B_rad_CR",
     text: "Once a simp always a simp.",
     created_at: 1618237899,
-    likes: 41
+    likes: 41,
+    tags: [
+      "SIMP",
+      "CR",
+      "Yolo",
+      "YourMom"
+    ]
   } as Kwat,
   {
     id: "2",
@@ -15,7 +21,13 @@ export default [
     usertag: "@B_rad_CR",
     text: "Once a simp always a simp.",
     created_at: 1618237899,
-    likes: 41
+    likes: 41,
+    tags: [
+      "SIMP",
+      "CR",
+      "Yolo",
+      "YourMom"
+    ]
   } as Kwat,
   {
     id: "3",
@@ -23,7 +35,13 @@ export default [
     usertag: "@B_rad_CR",
     text: "Once a simp always a simp.",
     created_at: 1618237899,
-    likes: 41
+    likes: 41,
+    tags: [
+      "SIMP",
+      "CR",
+      "Yolo",
+      "YourMom"
+    ]
   } as Kwat,
   {
     id: "4",
@@ -31,7 +49,13 @@ export default [
     usertag: "@B_rad_CR",
     text: "Once a simp always a simp.",
     created_at: 1618237899,
-    likes: 41
+    likes: 41,
+    tags: [
+      "SIMP",
+      "CR",
+      "Yolo",
+      "YourMom"
+    ]
   } as Kwat,
   {
     id: "5",
@@ -39,7 +63,13 @@ export default [
     usertag: "@B_rad_CR",
     text: "Once a simp always a simp.",
     created_at: 1618237899,
-    likes: 41
+    likes: 41,
+    tags: [
+      "SIMP",
+      "CR",
+      "Yolo",
+      "YourMom",
+    ]
   } as Kwat,
   {
     id: "6",
@@ -47,7 +77,13 @@ export default [
     usertag: "@B_rad_CR",
     text: "Once a simp always a simp.",
     created_at: 1618237899,
-    likes: 41
+    likes: 41,
+    tags: [
+      "SIMP",
+      "CR",
+      "Yolo",
+      "YourMom"
+    ]
   } as Kwat,
   
 ]
