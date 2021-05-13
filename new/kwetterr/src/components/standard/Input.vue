@@ -1,7 +1,7 @@
 <template>
 <div class="field">
   <p class="control has-icons-left has-icons-right ">
-    <input class="input" type="email" placeholder="Type a name">
+    <input v-model="value" class="input" type="email" placeholder="Type a name" >
     <span class="icon is-small is-right">
       <i class="fas fa-search"/>
     </span>
@@ -12,7 +12,21 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-const Input = defineComponent({});
+const Input = defineComponent({
+  emits: [
+    "value-changed"
+  ],
+  data() {
+    return {
+      value: ""
+    }
+  },
+  watch: {
+    value(newValue) {
+      this.$emit("value-changed", newValue);
+    }
+  }
+});
 export default Input;
 
 </script>

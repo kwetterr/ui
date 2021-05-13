@@ -1,6 +1,6 @@
 <template>
   <tr>
-    <th>{{ user.id }}</th>
+    <th><abbr>{{ user.id }}</abbr></th>
     <td>{{ user.name }}</td>
     <td>{{ user.email }}</td>
     <td>
@@ -16,14 +16,14 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import { TableUser } from "@/types/TableUser";
+import { UserModel } from "@/types/user/UserModel";
 
 export default defineComponent({
   name: "TableRow",
 
   props: {
     user: {
-      type: Object as PropType<TableUser>,
+      type: Object as PropType<UserModel>,
       required: true,
     }
   },

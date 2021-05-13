@@ -102,7 +102,6 @@ import router from "@/router";
 import { userService } from "@/services/UserService";
 
 import { RegisterModel } from "@/types/user/RegisterModel";
-//import { UserModel } from "@/types/user/UserModel";
 
 import Btn from "@/components/standard/Btn.vue";
 import { AxiosError } from "axios";

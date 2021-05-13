@@ -6,5 +6,6 @@ export interface UserModel {
   country: string,
   biography: string,
   avatar: string,
-  role: string
+  role: string,
+  token: string
 }

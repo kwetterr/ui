@@ -6,7 +6,7 @@ import { RegisterModel } from '@/types/user/RegisterModel';
 export default class UserService {
 
    public async getAll(): Promise<Array<UserModel>> {
-      const response = await http.get(`/users`);
+      const response = await http.get(`/`);
       return response.data;
    }
 
