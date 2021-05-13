@@ -1,5 +1,5 @@
 <template>
-  <navbar @loggedOut="loggedIn = false" :loggedIn="loggedIn" />
+  <navbar @loggedOut="loggedIn = false" :loggedIn="loggedIn" :username="username" />
   <router-view @credentialsChanged="validateUser()" />
 </template>
 
@@ -7,6 +7,7 @@
 import { Options, Vue } from "vue-class-component";
 import Navbar from "@/components/standard/Navbar.vue";
 import Admin from "@/views/Admin.vue";
+import { UserModel } from "./types/user/UserModel";
 
 @Options({
   components: {
@@ -16,6 +17,7 @@ import Admin from "@/views/Admin.vue";
   data() {
     return {
       loggedIn: false,
+      username: "",
     };
   },
   created() {
@@ -26,8 +28,11 @@ import Admin from "@/views/Admin.vue";
       let user = localStorage.getItem("user");
       if (user) {
         this.loggedIn = true;
+        let userModel: UserModel = JSON.parse(user);
+        this.username = userModel.username;
       } else {
         this.loggedIn = false;
+        this.username = "";
       }
     },
   },

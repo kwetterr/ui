@@ -1,22 +1,22 @@
-import UserModel from '@/classes/UserModel';
+import { UserModel } from '@/types/user/UserModel';
 import http from '@/services/http';
+import { LoginModel } from '@/types/user/LoginModel';
 
-export default class PakketService {
+export default class UserService {
 
-   public async getAll(): Promise<Array<PackageModel>> {
-      const response = await http.get(`/api/packages`);
+   public async getAll(): Promise<Array<UserModel>> {
+      const response = await http.get(`/users`);
       return response.data;
    }
-   public async post(packageModel): Promise<PackageModel> {
-      const response = await http.post(`/api/packages`, packageModel);
+   public async login(loginModel: LoginModel): Promise<UserModel> {
+      const response = await http.post(`/authorize`, loginModel);
       return response.data;
    }
   
-   public async get(id): Promise<PackageModel> {
+   public async getbyId(id: string): Promise<UserModel> {
       const response =  await http.get(`/api/packages/${id}`);
       return response.data;
    }
 }
 
-// A singleton instance
-export const pakketService = new PakketService();
+export const userService = new UserService();

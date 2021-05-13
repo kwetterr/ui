@@ -5,12 +5,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-const Input = defineComponent({
+const Btn = defineComponent({
   props: {
     text: String,
   }
 });
-export default Input;
+export default Btn;
 
 </script>
 

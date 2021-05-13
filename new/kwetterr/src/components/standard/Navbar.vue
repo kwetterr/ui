@@ -26,9 +26,6 @@
         <router-link :to="{ name: 'Admin' }" class="navbar-item">
           Admin
         </router-link>
-        <router-link :to="{ name: 'Home' }" class="navbar-item">
-          Profile
-        </router-link>
       </div>
 
       <div class="navbar-end">
@@ -44,6 +41,9 @@
         </div>
         <div v-else class="navbar-item">
           <div class="buttons">
+            <router-link :to="{ name: 'Profile' }" v-if="username" class="button is-transparant" >
+              {{ username }}
+            </router-link>
             <div class="button is-link" @click="logout()">
               <strong>Logout</strong>
             </div>
@@ -59,11 +59,10 @@ import { defineComponent } from "vue";
 import router from "@/router";
 
 const Navbar = defineComponent({
-  emits: [
-    "logged-out"
-  ],
+  emits: ["logged-out"],
   props: {
-      loggedIn: Boolean,
+    loggedIn: Boolean,
+    username: String
   },
   methods: {
     register() {},
@@ -73,11 +72,7 @@ const Navbar = defineComponent({
       this.$emit("logged-out");
       router.push("/login");
     },
-  },
-  data() {
-    return {
-    };
-  },
+  }
 });
 export default Navbar;
 </script>
