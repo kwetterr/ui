@@ -5,28 +5,48 @@
       <div class="field">
         <label class="label">Name</label>
         <p class="control has-icons-left has-icons-right">
-          <input class="input" type="text" placeholder="Bob Balls" />
+          <input
+            v-model="registerModel.name"
+            class="input"
+            type="text"
+            placeholder="Bob Balls"
+          />
         </p>
       </div>
 
       <div class="field">
         <label class="label">Username</label>
         <p class="control has-icons-left has-icons-right">
-          <input class="input" type="password" placeholder="Bob123" />
+          <input
+            v-model="registerModel.username"
+            class="input"
+            type="text"
+            placeholder="Bob123"
+          />
         </p>
       </div>
 
       <div class="field">
         <label class="label">Email</label>
         <p class="control has-icons-left has-icons-right">
-          <input class="input" type="email" placeholder="Bob@email.com" />
+          <input
+            v-model="registerModel.email"
+            class="input"
+            type="email"
+            placeholder="Bob@email.com"
+          />
         </p>
       </div>
 
       <div class="field">
         <label class="label">Password</label>
         <p class="control has-icons-left has-icons-right">
-          <input class="input" type="password" placeholder="Password" />
+          <input
+            v-model="registerModel.password"
+            class="input"
+            type="password"
+            placeholder="Password"
+          />
         </p>
       </div>
 
@@ -34,8 +54,9 @@
         <label class="label">Biography</label>
         <p class="control has-icons-left has-icons-right">
           <input
+            v-model="registerModel.biography"
             class="input"
-            type="password"
+            type="text"
             placeholder="I like to talk about dogs and such! :)"
           />
         </p>
@@ -43,6 +64,7 @@
 
       <div class="field">
         <label class="label">Profile picture</label>
+        <img class="avatar-img" :src="registerModel.avatar" />
 
         <div class="file has-name">
           <label class="file-label">
@@ -64,8 +86,12 @@
           </label>
         </div>
       </div>
+      <div class="field"></div>
 
       <Btn :text="submit" @click="register()" />
+      <div v-if="errorMessage" class="subtitle has-text-danger">
+        {{ errorMessage }}
+      </div>
     </div>
   </div>
 </template>
@@ -73,10 +99,13 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import router from "@/router";
+import { userService } from "@/services/UserService";
 
 import { RegisterModel } from "@/types/user/RegisterModel";
+//import { UserModel } from "@/types/user/UserModel";
 
 import Btn from "@/components/standard/Btn.vue";
+import { AxiosError } from "axios";
 
 const Register = defineComponent({
   components: {
@@ -85,6 +114,7 @@ const Register = defineComponent({
   data() {
     return {
       submit: "Register",
+      errorMessage: "",
       fileName: "",
       registerModel: {
         name: "",
@@ -98,16 +128,28 @@ const Register = defineComponent({
   },
   methods: {
     register(): void {
-      alert("registered!");
-      router.push("/");
+      userService
+        .register(this.registerModel)
+        .then(() => {
+          alert("success");
+          router.push("/");
+        })
+        .catch((err: AxiosError) => {
+          this.errorMessage = err.message;
+        });
     },
-    fileChanged(event: Event): void {
+    async fileChanged(event: Event): Promise<void> {
       if (event && event.target) {
         const el = event.target as HTMLInputElement;
         const files = el?.files;
         if (files) {
           const file = files[0];
           this.fileName = file.name;
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => {
+            this.registerModel.avatar = reader.result as string;
+          };
         }
       }
     },
@@ -118,12 +160,7 @@ export default Register;
 </script>
 
 <style lang="postcss" scoped>
-.table-section {
-  margin-left: 5%;
-  margin-top: 5%;
-}
-
-.form {
-  margin: 50px 15% 0 15%;
+.avatar-img {
+  width: 100px;
 }
 </style>
