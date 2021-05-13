@@ -20,7 +20,7 @@ import { UserModel } from "@/types/user/UserModel";
 import InputField from "@/components/standard/Input.vue";
 import Table from "@/components/table/Table.vue";
 
-const Admin = defineComponent({
+const UserOverview = defineComponent({
   components: {
     InputField,
     Table,
@@ -45,7 +45,7 @@ const Admin = defineComponent({
     });
   },
 });
-export default Admin;
+export default UserOverview;
 </script>
 
 <style lang="postcss" scoped>

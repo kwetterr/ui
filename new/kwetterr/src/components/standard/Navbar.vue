@@ -20,28 +20,28 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div v-if="loggedIn" class="navbar-start">
-        <router-link :to="{ name: 'Home' }" class="navbar-item">
+        <router-link :to="{ name: 'home' }" class="navbar-item">
           Newsfeed
         </router-link>
-        <router-link :to="{ name: 'Admin' }" class="navbar-item">
-          Admin
+        <router-link :to="{ name: 'users' }" class="navbar-item">
+          Users
         </router-link>
       </div>
 
       <div class="navbar-end">
         <div v-if="!loggedIn" class="navbar-item">
           <div class="buttons">
-            <router-link :to="{ name: 'Register' }" class="button is-link">
+            <router-link :to="{ name: 'register' }" class="button is-link">
               <strong>Sign up</strong>
             </router-link>
-            <router-link :to="{ name: 'Login' }" class="button is-light">
+            <router-link :to="{ name: 'login' }" class="button is-light">
               Log in
             </router-link>
           </div>
         </div>
         <div v-else class="navbar-item">
           <div class="buttons">
-            <router-link :to="{ name: 'Profile' }" v-if="username" class="button is-transparant" >
+            <router-link :to="{ name: 'profile', params: { username: username } }" v-if="username" class="button is-transparant" >
               {{ username }}
             </router-link>
             <div class="button is-link" @click="logout()">
@@ -62,7 +62,7 @@ const Navbar = defineComponent({
   emits: ["logged-out"],
   props: {
     loggedIn: Boolean,
-    username: String
+    username: String,
   },
   methods: {
     register() {},

@@ -6,12 +6,12 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import Navbar from "@/components/standard/Navbar.vue";
-import Admin from "@/views/Admin.vue";
+import UserOverview from "@/views/UserOverview.vue";
 import { UserModel } from "./types/user/UserModel";
 
 @Options({
   components: {
-    Admin,
+    UserOverview,
     Navbar,
   },
   data() {
