@@ -5,14 +5,25 @@
       <div class="field">
         <label class="label">Email</label>
         <p class="control has-icons-left has-icons-right">
-          <input v-model="loginModel.email" class="input" type="email" placeholder="Email" />
+          <input
+            v-model="loginModel.email"
+            class="input"
+            type="email"
+            placeholder="Email"
+          />
         </p>
       </div>
 
       <div class="field">
         <label class="label">Password</label>
         <p class="control has-icons-left has-icons-right">
-          <input v-model="loginModel.password" current-password class="input" type="password" placeholder="Password" />
+          <input
+            v-model="loginModel.password"
+            current-password
+            class="input"
+            type="password"
+            placeholder="Password"
+          />
         </p>
       </div>
 
@@ -23,17 +34,15 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import router from "@/router";
 import Btn from "@/components/standard/Btn.vue";
-import { LoginModel } from "@/types/req/LoginModel";
+import { LoginModel } from "@/types/user/LoginModel";
+import router from "@/router";
 
 const Login = defineComponent({
   components: {
     Btn,
   },
-  emits: [
-    "credentials-changed"
-  ],
+  emits: ["credentials-changed"],
   data() {
     return {
       submit: "Login",
@@ -45,10 +54,11 @@ const Login = defineComponent({
   },
   methods: {
     login(): void {
-      let userId = "1";
-      localStorage.setItem("userId", userId);
-      router.push("/");
+      let user = "1";
+      localStorage.setItem("user", user);
       this.$emit("credentials-changed");
+      router.push("/");
+
     },
   },
 });

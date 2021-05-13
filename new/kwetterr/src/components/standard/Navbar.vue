@@ -19,7 +19,7 @@
     </div>
 
     <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
+      <div v-if="loggedIn" class="navbar-start">
         <router-link :to="{ name: 'Home' }" class="navbar-item">
           Newsfeed
         </router-link>
@@ -62,25 +62,21 @@ const Navbar = defineComponent({
   emits: [
     "logged-out"
   ],
+  props: {
+      loggedIn: Boolean,
+  },
   methods: {
     register() {},
     login() {},
     logout() {
-      localStorage.removeItem("userId");
-      this.loggedIn = false;
+      localStorage.removeItem("user");
       this.$emit("logged-out");
-      router.push("/");
+      router.push("/login");
     },
   },
   data() {
     return {
-      loggedIn: false,
     };
-  },
-  created() {
-    if (localStorage.getItem("userId")) {
-      this.loggedIn = true;
-    }
   },
 });
 export default Navbar;

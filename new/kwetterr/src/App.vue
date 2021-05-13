@@ -1,35 +1,36 @@
 <template>
-    <navbar @loggedOut="loggedIn = false" />
-
-    <router-view v-if="loggedIn"/>
-    <router-view v-else>
-      <Login />
-    </router-view>
+  <navbar @loggedOut="loggedIn = false" :loggedIn="loggedIn" />
+  <router-view @credentialsChanged="validateUser()" />
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import Login from '@/views/Login.vue';
-import Navbar from '@/components/standard/Navbar.vue';
-import Admin from '@/views/Admin.vue';
+import { Options, Vue } from "vue-class-component";
+import Navbar from "@/components/standard/Navbar.vue";
+import Admin from "@/views/Admin.vue";
 
 @Options({
   components: {
     Admin,
     Navbar,
-    Login
   },
   data() {
     return {
-      loggedIn: false
-    }
+      loggedIn: false,
+    };
   },
   created() {
-    let id = localStorage.getItem("userId");
-    if(id) {
-      this.loggedIn = true;
-    }
-  }
+    this.validateUser();
+  },
+  methods: {
+    validateUser() {
+      let user = localStorage.getItem("user");
+      if (user) {
+        this.loggedIn = true;
+      } else {
+        this.loggedIn = false;
+      }
+    },
+  },
 })
 export default class App extends Vue {}
 </script>
@@ -37,9 +38,8 @@ export default class App extends Vue {}
 <style lang="scss">
 @charset "utf-8";
 
-$link: #4A42C1;
+$link: #4a42c1;
 
 @import "../node_modules/bulma/bulma.sass";
 @import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
-
 </style>

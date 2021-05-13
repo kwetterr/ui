@@ -7,7 +7,7 @@
         class="kwat-text textarea"
         placeholder="What are you up to today?"
       />
-      <Btn :text="'Post'"  @click="test()"/>
+      <Btn :text="'Post'" @click="test()"/>
     </div>
 
     <div class="kwat-container">
@@ -30,6 +30,7 @@ import Kwat from "@/components/kwat/Kwat.vue";
 import Btn from "@/components/standard/Btn.vue";
 import router from "@/router";
 import kwats from "@/data/Kwats";
+import Validator from "@/helpers/Validator";
 
 const Home = defineComponent({
   components: {
@@ -49,6 +50,10 @@ const Home = defineComponent({
       router.push({ name: "Login" });
     }
   },
+  created() {
+    const validator = new Validator();
+    validator.RedirectIfInvalid();
+  }
 });
 export default Home;
 </script>
